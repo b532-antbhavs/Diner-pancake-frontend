@@ -39,7 +39,7 @@ lunchLink.addEventListener("click", () => {
 
 dinnerLink.addEventListener("click", () => {
     showView("menu");
-    displayFilteredMenu("/dinner", "Dinner Menu");
+    displayFilteredMenu("/supper", "Dinner Menu");
 });
 
 vegetarianLink.addEventListener("click", () => {
