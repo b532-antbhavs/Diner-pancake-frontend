@@ -19,10 +19,5 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
-      - name: Upload static site
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: '.'
-
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
