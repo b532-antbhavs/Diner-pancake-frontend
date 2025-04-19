@@ -4,38 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Merger</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="menu" class="container">
-        <h1>Combined Menu</h1>
+    <div class="navbar">
+        <a href="#" id="all-menu">All Menus</a>
+        <a href="#" id="breakfast">Breakfast</a>
+        <a href="#" id="lunch">Lunch</a>
+        <a href="#" id="dinner">Dinner</a>
+        <a href="#" id="vegetarian">Vegetarian</a>
+        <a href="#" id="login-nav">Login</a>
     </div>
 
-    <script>
-      let host = "http://localhost:8080";
-      let menuDiv = document.getElementById("menu");
+    <div class="container" id="menu-container">
+        <div id="menu"></div>
+    </div>
 
-      displayMergedMenu();
+    <div class="login-container hidden" id="login-container">
+        <div class="login-header">
+            <h2>Login with Social Media or Manually</h2>
+        </div>
+        <div class="social-login">
+            <button class="social-btn github-btn">
+                <i class="fab fa-github"></i> Login with Github
+            </button>
+            <button class="social-btn google-btn">
+                <i class="fab fa-google"></i> Login with Google
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="login-username">Username</label>
+            <input type="text" id="login-username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Password">
+        </div>
+        <button class="login-btn" id="login-btn">Login</button>
+        <div class="login-footer">
+            <a href="#" id="signup-link">Sign up</a>
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
 
-      async function getMergedMenu() {
-        let response = await fetch(host + "/merger");
-        let menu = await response.json();
-        return menu;
-      }
+    <div class="signup-container hidden" id="signup-container">
+        <div class="signup-header">
+            <h2>Sign Up</h2>
+            <p>Please fill in this form to create an account.</p>
+        </div>
+        <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" placeholder="Enter Email">
+        </div>
+        <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" placeholder="Enter Username">
+        </div>
+        <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" placeholder="Enter Password">
+        </div>
+        <div class="terms">
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+        </div>
+        <div class="action-buttons">
+            <button class="cancel-btn" id="cancel-btn">Cancel</button>
+            <button class="signup-btn" id="signup-btn">Sign Up</button>
+        </div>
+    </div>
 
-      async function displayMergedMenu() {
-        let menu = await getMergedMenu();
-        for (let menuItem of menu) {
-          let div = document.createElement("div");
-          div.className = "menu-item";
-          div.innerHTML = `
-               <div class="item-name">${menuItem.name}</div>
-               <div class="item-description">${menuItem.description}</div>
-               <div class="item-price">$${menuItem.price.toFixed(2)}</div>
-               `;
-          menuDiv.appendChild(div);
-        }
-      }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 </html>
